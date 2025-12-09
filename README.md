@@ -22,3 +22,29 @@ gradle.properties：Gradle 的全局属性配置文件（比如 JVM 参数、版
 local.properties：本地环境配置文件（通常记录 Android SDK 路径等本地独有的配置）。
 
 日志文件（hs_err_pidxxxx.log）：这些是 Java 虚拟机（JVM）的错误日志，通常是项目编译 / 运行时出现崩溃时生成的（记录了崩溃原因，用于排查问题）。
+
+后端：
+
+开发配置文件：
+
+.idea//.vscode/：分别是 PyCharm、VS Code 的 IDE 配置目录（记录编辑器的开发环境设置）；
+
+requirements.txt：Python 项目的依赖清单（里面列了项目需要安装的第三方库，比如 Flask/Django、数据库驱动等）。
+
+核心代码文件：
+
+main.py：项目的入口文件（通常是启动后端服务的主脚本）；
+
+1.py/2.py/16.py等.py文件：是后端的业务代码模块（比如处理接口请求、数据逻辑、工具函数等）；
+
+test_db_connection.py：数据库连接测试脚本（用于验证后端和数据库是否能正常通信）。
+
+其他文件：
+
+README.md：项目说明文档（介绍项目功能、启动步骤等）；
+
+input.txt/main.txt：可能是测试用的输入数据文件；
+
+启动帮助.jpg：应该是项目启动的图文教程。
+
+
