@@ -10,27 +10,33 @@
 
 核心功能模块实现:
 数据可视化仪表盘通过 MainPage.vue 的卡片式布局呈现多维度监测数据：实时数据展示采用响应式绑定实现环境温度、湿度等指标的动态更新，通过空值处理语法（{{environmentData?.temperature || 0}}）保障界面稳定性；设计 dashboard-card 组件体系，通过 small-card、env-card 等修饰类区分视觉层次；当传感器数据超出阈值时，集成 ECharts 实现当日数据趋势展示，支持缩放、平移与区域选择交互。
-<img width="414" height="469" alt="image" src="https://github.com/user-attachments/assets/31eecace-c17a-4cf0-afd4-d028d3302da9" />
+                                                         <img width="414" height="469" alt="image" src="https://github.com/user-attachments/assets/31eecace-c17a-4cf0-afd4-d028d3302da9" />
+
 图4-5-1  用户界面传感器数据
 <img width="914" height="386" alt="image" src="https://github.com/user-attachments/assets/00054c78-9aa7-4615-84af-a99c6cd53045" />
+
 图4-5-2  用户界面近期土壤NPK曲线
 
 AI 工具集界面聚焦研究人员专业需求，实现模型推理与可视化的深度融合：
 
 图像识别：基于 input [type=file] 封装拖放上传区域，支持 JPG/PNG 格式验证与大小限制（≤5MB），选择图片后触发数个TS脚本，首先进行一个简单的预览，再点击上传后，触发TS脚本把图片上传至服务器并返回图片在服务器中的路径，最后点击预测分析后，把刚才的路径传入POST请求body中，随后调用对应后端API带有图片的一个算法识别，将结果作为进度条形式显示在页面上。
 <img width="428" height="322" alt="image" src="https://github.com/user-attachments/assets/77b9e602-b8f0-43d4-b16e-15e34f1ba574" />
+
 图4-5-3  银杏状态图片识别功能
 
 光谱数据分析：手动输入 21 个光谱特征值，提供数据校验；点击后触发TS脚本，把文本数据放入POST请求的Body中，调用后端API并返回结果显示，结果以进度条样式方便用户进行对比观察。、
 <img width="629" height="318" alt="image" src="https://github.com/user-attachments/assets/c0165a73-eff7-4e75-9dbc-0411020f1ce1" />
+
 图4-5-4  多光谱识别功能
 
 碳汇预测：数据是由后端源源不断采集并进行存入数据库的，当点击获取结果后，自动触发TS脚本，向后端发生GET请求，获取预测数据。
 <img width="773" height="261" alt="image" src="https://github.com/user-attachments/assets/2c67f35c-5439-4a5a-8078-52954720c4c4" />
+
 图4-5-5  碳汇数据功能
 
 大语言模型交互：点击后向后端发送GET请求，后端相应模块完成任务后，结果返回给用户页面，AI建议有两个模块，其中一个农户模块的AI是针对农田整体而言的，第二个模块是研究人员版本中，对具体植株的某个建议。
 <img width="448" height="189" alt="image" src="https://github.com/user-attachments/assets/59943de0-69da-4d76-99e5-61e8aa3e35c4" /><img width="444" height="187" alt="image" src="https://github.com/user-attachments/assets/0794dae8-f72b-4603-89e5-ae8d98cf6cf4" />
+
 图4-5-6  AI建议功能
 
 数据交互设计通过 sensor.ts 封装请求逻辑：采用 Vite 配置将 /api 路径代理至后端服务，解决跨域限制；定义 SensorResponse<T>泛型接口，统一处理成功 / 失败状态与错误信息；对静态数据（如地块信息）采用 localStorage 缓存，设置 12 小时过期时间；使用 Axios CancelToken 实现页面切换时的请求中断，避免无效数据返回。
@@ -39,10 +45,13 @@ AI 工具集界面聚焦研究人员专业需求，实现模型推理与可视�
 
 性能与兼容性方面，前端性能优化通过路由级懒加载控制初始包体积在 150KB 以内；采用 WebP 格式与响应式图片策略优化图像加载；大数据列表（>1000 条）使用 vue-virtual-scroller 实现高效渲染；借助 Vue3 的 computed 特性缓存派生数据，避免重复计算。兼容性适配覆盖 Chrome 88+、Firefox 85+、Edge 90 + 等现代浏览器，通过 360px/768px/1200px 断点设置实现跨设备适配，符合 WCAG 2.1 AA 标准支持无障碍访问，配置 PWA 实现核心功能的离线使用。
 <img width="915" height="452" alt="image" src="https://github.com/user-attachments/assets/e20c19d1-296e-4f21-acb1-7e9957382f41" />
+
 图4-5-7  PC网页端界面（1）
 <img width="915" height="457" alt="image" src="https://github.com/user-attachments/assets/b3b924ba-45a7-4c4b-bedb-9682b73093f7" />
+
 图4-5-8  PC网页端界面（2）
 <img width="291" height="633" alt="image" src="https://github.com/user-attachments/assets/2f089aaf-f239-410e-98de-02d571744c8c" /><img width="289" height="627" alt="image" src="https://github.com/user-attachments/assets/d6ad62e5-0a29-4c82-b299-3692dd93fbe2" /><img width="289" height="628" alt="image" src="https://github.com/user-attachments/assets/34fd73ae-9946-40d6-9b1e-960f5a591342" />
+
 图4-5-9  移动端APP界面 
 
 项目代码在master分支里
