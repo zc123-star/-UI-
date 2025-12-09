@@ -20,6 +20,7 @@
 AI 工具集界面聚焦研究人员专业需求，实现模型推理与可视化的深度融合：
 
 图像识别：基于 input [type=file] 封装拖放上传区域，支持 JPG/PNG 格式验证与大小限制（≤5MB），选择图片后触发数个TS脚本，首先进行一个简单的预览，再点击上传后，触发TS脚本把图片上传至服务器并返回图片在服务器中的路径，最后点击预测分析后，把刚才的路径传入POST请求body中，随后调用对应后端API带有图片的一个算法识别，将结果作为进度条形式显示在页面上。
+
 <img width="428" height="322" alt="image" src="https://github.com/user-attachments/assets/77b9e602-b8f0-43d4-b16e-15e34f1ba574" />
 
 图4-5-3  银杏状态图片识别功能
@@ -52,7 +53,7 @@ AI 工具集界面聚焦研究人员专业需求，实现模型推理与可视�
 
 图4-5-8  PC网页端界面（2）
 
-<img width="291" height="633" alt="image" src="https://github.com/user-attachments/assets/2f089aaf-f239-410e-98de-02d571744c8c" /> <img width="289" height="627" alt="image" src="https://github.com/user-attachments/assets/d6ad62e5-0a29-4c82-b299-3692dd93fbe2" /> <img width="289" height="628" alt="image" src="https://github.com/user-attachments/assets/34fd73ae-9946-40d6-9b1e-960f5a591342" />
+<img width="291" height="633" alt="image" src="https://github.com/user-attachments/assets/2f089aaf-f239-410e-98de-02d571744c8c" /> <img width="289" height="627" alt="image" src="https://github.com/user-attachments/assets/d6ad62e5-0a29-4c82-b299-3692dd93fbe2" /><img width="289" height="628" alt="image" src="https://github.com/user-attachments/assets/34fd73ae-9946-40d6-9b1e-960f5a591342" />
 
 图4-5-9  移动端APP界面 
 
